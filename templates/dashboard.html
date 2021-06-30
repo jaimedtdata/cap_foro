@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="icon-big text-center">
+                                    <i class="teal fas fa-copy"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="detail text-center">
+                                    <p>Liquidaciones</p>
+                                    <span class="number">152</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr/>
+                            <div class="stats">
+                                <i class="fas fa-redo-alt"></i> Actualizado
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="icon-big text-center">
+                                    <i class="olive fas fa-money-bill-alt"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="detail text-center">
+                                    <p>Recaudación</p>
+                                    <span class="number">S/3263.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats">
+                                <i class="fas fa-calendar"></i> En el mes de Noviembre
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="icon-big text-center">
+                                    <i class="violet fas fa-eye"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="detail text-center">
+                                    <p>Visitas</p>
+                                    <span class="number">1024</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats">
+                                <i class="fas fa-stopwatch"></i> En las últimas 24 horas
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="icon-big text-center">
+                                    <i class="orange fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="detail text-center">
+                                    <p>Mensajes</p>
+                                    <span class="number">75</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats">
+                                <i class="fas fa-envelope-open-text"></i> En bandeja de entrada
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="head">
+                            <h4 class="mb-0">Tráfico en la Plataforma</h4>
+                            <p class="text-muted">2020</p>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas class="chart" id="trafficflow"></canvas>
+                        </div>
+                        <div class="ui hidden divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="head">
+                            <h4 class="mb-0">Resumen de Liquidaciones por mes</h4>
+                            <p class="text-muted">2020</p>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas class="chart" id="sales"></canvas>
+                        </div>
+                        <div class="ui hidden divider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="head">
+                            <h4 class="mb-0">Liquidación por Municipalidad</h4>
+                            <p class="text-muted">Resumen de Liquidación Mensual por Municipalidades Distritales</p>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <table class="table no-margin bg-lighter-grey">
+                                <thead class="success">
+                                    <tr>
+                                        <th>Municipalidad</th>
+                                        <th class="text-right">Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for muni in munis %}
+                                    <tr>
+                                        <td><i class="fa fa-flag"></i> {{muni.1}}</td>
+                                        <td class="text-right">{{cantidades|random}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="head">
+                            <h4 class="mb-0">Liquidación por Provincia</h4>
+                            <p class="text-muted">Resumen de Liquidación Mensual por Municipalidades Provinciales</p>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <table class="table no-margin bg-lighter-grey">
+                                <thead class="success">
+                                    <tr>
+                                        <th>Municipalidad</th>
+                                        <th class="text-right">Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for muni in provs %}
+                                    <tr>
+                                        <td><i class="fa fa-flag"></i> {{muni.1}}</td>
+                                        <td class="text-right">{{cantidades|random}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

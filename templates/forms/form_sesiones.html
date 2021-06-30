@@ -1,0 +1,41 @@
+<form class="needs-validation">
+    <div class="form-row">
+        <div class="form-group col-md-12 mb-0">
+            <table id="id_sessions_table" class="table table-condensed mb-none">
+                <tbody>
+                    {% for fr in formset.forms %}
+                        <div class="appear-animation" data-appear-animation="fadeInDown">
+                            <tr id="{{ fr.prefix }}-row" class="add-animation">
+                                <td width="400">{{ fr.names.label }}<br>{{ fr.names }}</td>
+                                <td>{{ fr.ncap.label }}<br>{{ fr.ncap }}</td>
+                                <td>{{ fr.condicion.label }}<br>{{ fr.condicion }}</td>
+                                <td>{{ fr.nsesions.label }}<br>{{ fr.nsesions }}</td>
+                                <td></td>
+                            </tr>
+                            {% if fr.errors %}
+                                <tr>
+                                    <td colspan="2">
+                                        {{ fr.errors }}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p>
+                {{ formset.management_form }}
+            </p>
+        </div>
+        <div class="form-group col-md-12">
+            <h4>Nota:</h4>
+            <p>
+                <ol>
+                    <li>EN CONDICIÓN: T = Titular, TC = Titular Coordinador, S = Suplente, A = Asesor</li>
+                    <li>EN CASO DE CAMBIO DE DIRECCIÓN Y/O TELÉFONO, COMUNICAR INMEDIATAMENTE AL CAP.</li>
+                    <li>EN LOS ITEMS (*) SOLO CONSIGNAR LOS DERECHOS CANCELADOS PARA LAS 1ª, 3ª, 5ª, 7ª REVISIONES</li>
+                </ol>
+            </p>
+        </div>
+    </div>
+</form>

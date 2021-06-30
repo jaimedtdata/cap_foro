@@ -1,0 +1,91 @@
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>{{ form.muni.label }}</label>
+            {{ form.muni }}
+        </div>
+        <div class="form-group col-md-2">
+            <label>{{ form.mes.label }}</label>
+            {{ form.mes }}
+        </div>
+        <div class="form-group col-md-2">
+            <label>{{ form.dia.label }}</label>
+            {{ form.dia }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4 text-right">
+            <label>Cantidad de Anteproyectos Revisados:</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.num }}
+        </div>
+        <div class="form-group col-md-1"></div>
+        <div class="form-group col-md-2 text-right">
+            <label>Monto * S/.</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.decimal }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4 text-right">
+            <label>Cantidad de Proyectos Revisados:</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.num }}
+        </div>
+        <div class="form-group col-md-1"></div>
+        <div class="form-group col-md-2 text-right">
+            <label>Monto * S/.</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.decimal }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4 text-right">
+            <label>Cantidad de Conformidad de Obra:</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.num }}
+        </div>
+        <div class="form-group col-md-1"></div>
+        <div class="form-group col-md-2 text-right">
+            <label>Monto * S/.</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.decimal }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4 text-right">
+            <label>Cantidad de Regularizaciones:</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.num }}
+        </div>
+        <div class="form-group col-md-1"></div>
+        <div class="form-group col-md-2 text-right">
+            <label>Monto * S/.</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.decimal }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4 text-right">
+            <label>Total:</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.num }}
+        </div>
+        <div class="form-group col-md-1"></div>
+        <div class="form-group col-md-2 text-right">
+            <label>Total S/.</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.decimal }}
+        </div>
+    </div>
+</form>

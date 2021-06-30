@@ -1,0 +1,64 @@
+{% extends 'base_nfr.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="icon-big text-center">
+                                    <i class="orange fas fa-balance-scale-left"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="detail text-center">
+                                    <p>Normas Legales</p>
+                                    <span class="number">15 normas</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr/>
+                            <div class="stats">
+                                <a href="{% url 'rules' %}">Ingresar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="icon-big text-center">
+                                    <i class="blue fas fa-comments"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="detail text-center">
+                                    <p>Foro Interactivo</p>
+                                    <span class="number">135 temas</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr/>
+                            <div class="stats">
+                                <a href="{% url 'foro' %}">Ingresar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}    
+
+{% block script %}
+{% endblock %}    

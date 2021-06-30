@@ -1,0 +1,90 @@
+{% extends 'base_nfr.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+    	<div class="col-md-5">
+    		<h4 class="text-danger mt-2">Foro TEMAS : Pefiles Profesionales</h4>
+    	</div>
+        <div class="col-md-3">
+            <form class="ml-1">
+                <div class="form-row">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar por tema o categoría">
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-outline-danger"><i class="fas fa-search"></i></button>
+                        </span>
+                    </div>
+                    
+                </div>
+                
+            </form>
+        </div>
+                     
+    
+    </div>
+<div class="row">
+<div class="col-sm-6">
+        <div class="card border-secondary mb-3" style="width:400px;"> 
+            <img class="card-img-top" src="//placehold.it/150" alt="Card image cap" style="width:398px; height:180px;">
+            <div class="card-body text-secondary">
+                <h5 class="card-title">administrativo de obras </h5>
+                <p class="card-text">El arquitecto está en capacidad de crear diseños arquitectónicos sostenibles y sustentables que satisfagan los requisitos económicos, estéticos, mediombientales y técnicos.</p>
+            </div>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <a href="{% url 'foro_comentarios' %}" class="btn btn-primary">Ir a Comentarios</a>
+            
+        </div>
+
+        </div>
+    <div class="col-sm-6">
+
+        <div class="card border-secondary mb-3" style="width:400px;"> 
+            <img class="card-img-top" src="//placehold.it/150" alt="Card image cap" style="width:398px; height:180px;">
+            <div class="card-body text-secondary">
+                <h5 class="card-title">Paisajista </h5>
+                <p class="card-text">El arquitecto está en capacidad de crear diseños arquitectónicos sostenibles y sustentables que satisfagan los requisitos económicos, estéticos, mediombientales y técnicos.</p>
+            </div>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <a href="#" class="btn btn-primary">Ir a Comentarios</a>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+
+        <div class="card border-secondary mb-3" style="width:400px;"> 
+            <img class="card-img-top" src="//placehold.it/150" alt="Card image cap" style="width:398px; height:180px;">
+            <div class="card-body text-secondary">
+                <h5 class="card-title">Paisajista </h5>
+                <p class="card-text">El arquitecto está en capacidad de crear diseños arquitectónicos sostenibles y sustentables que satisfagan los requisitos económicos, estéticos, mediombientales y técnicos.</p>
+            </div>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <a href="#" class="btn btn-primary">Ir a Comentarios</a>
+        </div>
+    </div>
+
+        <div class="col-sm-6">
+
+        <div class="card border-secondary mb-3" style="width:400px;"> 
+            <img class="card-img-top" src="//placehold.it/150" alt="Card image cap" style="width:398px; height:180px;">
+            <div class="card-body text-secondary">
+                <h5 class="card-title">Paisajista </h5>
+                <p class="card-text">El arquitecto está en capacidad de crear diseños arquitectónicos sostenibles y sustentables que satisfagan los requisitos económicos, estéticos, mediombientales y técnicos.</p>
+            </div>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <a href="#" class="btn btn-primary">Ir a Comentarios</a>
+        </div>
+    </div>
+        
+</div>
+
+
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}

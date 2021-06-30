@@ -1,0 +1,189 @@
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><strong>{{ form.muni.label }}
+            </strong></label>{{ form.muni }}
+        </div>
+        <div class="form-group col-md-11 offset-md-1">
+            <label>{{ form.direccion.label }}</label>
+            {{ form.direccion }}
+        </div>
+        <div class="form-group col-md-5 offset-md-1">
+            <label>{{ form.telef.label }}</label>
+            {{ form.telef }}
+        </div>
+        <div class="form-group col-md-6">
+            <label>{{ form.email.label }}</label>
+            {{ form.email }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label><strong>{{ form.alcalde.label }}</strong> (nombre):</label>
+        </div>
+        <div class="form-group col-md-10">
+            {{ form.alcalde }}
+        </div>
+        <div class="form-group col-md-1 offset-md-1">
+            <label><strong>{{ form.prof.label}}</strong></label>
+        </div>
+        <div class="form-group col-md-4">
+            {{ form.prof }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label><strong>{{form.regulador.label}}</strong> (nombre):</label>
+        </div>
+        <div class="form-group col-md-7">
+            {{ form.regulador }}
+        </div>
+        <div class="form-group col-md-1 offset-md-1">
+            <label><strong>{{ form.prof.label }}</strong></label>
+        </div>
+        <div class="form-group col-md-4">
+            {{ form.prof }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label><strong>{{form.gerente.label}}</strong> (nombre):</label>
+        </div>
+        <div class="form-group col-md-7">
+            {{ form.gerente }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2 offset-md-1">
+            <label><strong>Arquitecto</strong> (marcar)</label>
+        </div>
+        <div class="form-group col-md-1">
+            {{ form.chbx }}
+        </div>
+        <div class="form-group col-md-1">
+            <label>CAP N°</label>
+        </div>
+        <div class="form-group col-md-4">
+        	{{ form.cap }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2 offset-md-1">
+            <label><strong>Ingeniero</strong> (marcar)</label>
+        </div>
+        <div class="form-group col-md-1">
+            {{ form.chbx }}
+        </div>
+        <div class="form-group col-md-1">
+            <label>CPI N°</label>
+        </div>
+        <div class="form-group col-md-4">
+        	{{ form.cap }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2 offset-md-1">
+            <label><strong>Otros</strong> (marcar)</label>
+        </div>
+        <div class="form-group col-md-1">
+            {{ form.chbx }}
+        </div>
+        <div class="form-group col-md-2">
+            <label><strong>Indicar Profesión:</strong></label>
+        </div>
+        <div class="form-group col-md-4">
+        	{{ form.cap }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label><strong>5. Sub Gerente</strong> (o Sub Director) <strong>de Obras Privadas: </strong></label>
+        </div>
+        <div class="form-group col-md-7">
+        	{{ form.txt }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label><strong>6. Sub Gerente</strong> (o Sub Director) <strong>de Obras Públicas: </strong></label>
+        </div>
+        <div class="form-group col-md-7">
+        	{{ form.txt }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label><strong>7. Jefe de Catastro:</strong></label>
+        </div>
+        <div class="form-group col-md-10">
+            {{ form.txt }}
+        </div>
+    </div>
+    {% include 'forms/forms_arquitect.html' %}
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <strong>9. Comisión técnica de Edificaciones:</strong>
+        </div>
+        <div class="form-group col-md-8">
+            <label>Presidente de la Comisión Técnica de Edificaciones (nombre y cargo):</label>
+            {{ form.txt }}
+        </div>
+        <div class="form-group col-md-2 text-right">
+            <label class="mt-4">CAP/CPI N°: </label>
+        </div>
+        <div class="form-group col-md-2 mt-4">
+            {{ form.txt }}
+        </div>
+        <div class="form-group col-md-6">
+            <label>Email:</label>
+            {{ form.txt }}
+        </div>
+        <div class="form-group col-md-6">
+            <label>Celular:</label>
+            {{ form.txt }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label>Día de Sesión:</label>
+            {{ form.date }}
+        </div>
+        <div class="form-group col-md-3">
+            <label>Horario:</label>
+            {{ form.time }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><strong>10. Observaciones:</strong></label>
+            {{ form.obs }}
+        </div>
+        <div class="form-group col-md-4">
+            <label>Fecha:</label>
+            {{ form.date }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12 text-center">
+            <label><strong>Delegado Titular Coordinador CAP 2020:</strong></label>
+        </div>
+        <div class="form-group col-md-1">
+            <label>Nombre:</label>
+        </div>
+        <div class="form-group col-md-8">
+            {{ form.txt }}
+        </div>
+        <div class="form-group col-md-1 text-right">
+            <label>CAP N°:</label>
+        </div>
+        <div class="form-group col-md-2">
+            {{ form.txt }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-lg-12">
+            <a href="{% url 'index' %}" class="btn btn-primary"><i class="fas fa-save"></i> Enviar</a>
+            <a href="{% url 'index' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar</a>
+        </div>
+    </div>
+</form>

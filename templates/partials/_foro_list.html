@@ -1,0 +1,30 @@
+{% for category in category_list %}
+<div class="card">
+    <h5 class="card-header foro">{{category.title}}</h5>
+    <div class="card-body py-2">
+    	{% for item in category.items %}
+		<div class="row">
+			<div class="col-md-1 text-center">
+				<h3 class="text-center mt-3"><i class="fa fa-comments"></i></h3>
+			</div>
+			<div class="col-md-6">
+				<h5><a href="{% url 'foro_temas' %}">{{item.title}}</a></h5>
+				<p class="txt-foro">
+					<span class="text-secondary">Temas: </span>{{item.themes_count}}
+					<span class="text-secondary">Mensajes: </span>{{item.messages_count}}
+				</p>
+			</div>
+			<div class="col-md-5">
+				<span>Ultimos Temas:</span>
+				<div class="border">
+					{% for message in item.last_messages %}
+						<a href="#"><strong>{{message.message}}</strong> <span class="text-secondary"> {{message.date}}</span></a><br>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<hr class="m-1">
+    	{% endfor %}
+    </div>
+</div>
+{% endfor %}
