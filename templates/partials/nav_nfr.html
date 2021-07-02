@@ -42,17 +42,26 @@
             <a href="#uielementsmenu3" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-money-bill-wave-alt"></i> Pasarela de Pagos</a>
             <ul class="collapse list-unstyled " id="uielementsmenu3">
                 <li>
+                   <a href="{% url 'member' %}"><i class="fas fa-comments"></i>Gestio de Miembros</a>
+                </li>
+                <li>
                    <a href="{% url 'foro' %}"><i class="fas fa-comments"></i>Pagos</a>
                 </li>
                 <li>
                    <a href="{% url 'rules' %}"><i class="fas fa-tasks"></i>Registro de Planes</a>
+                </li>
+                 <li>
+                   <a href="{% url 'configs' %}"><i class="fas fa-tasks"></i>Configuracion</a>
+                </li>
+                 <li>
+                   <a href="{% url 'liquid' %}"><i class="fas fa-tasks"></i>liquidacion</a>
                 </li>
 
 
             </ul>
         </li>
         <li>
-            <a href="#uielementsmenu2" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-wrench"></i> Configuracion</a>
+            <a href="#uielementsmenu2" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-wrench"></i> Parametros</a>
             <ul class="collapse list-unstyled " id="uielementsmenu2">
                 <li>
                    <a href="{% url 'foro' %}"><i class="fas fa-comments"></i>Foro Interactivo</a>

@@ -100,6 +100,10 @@ def charts(request):
 # 	}
 # 	return render(request, 'users.html', context)
 
+def member(request):
+    users = User.objects.all()
+    context = {'users': users}
+    return render(request, 'member.html', context)
 
 def users(request):
     users = User.objects.all()
