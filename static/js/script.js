@@ -24,7 +24,7 @@ $('.datatable').DataTable({
 	    "lengthMenu":     "Mostrar _MENU_ registros",
 	    "loadingRecords": "Cargando...",
 	    "processing":     "Procesando...",
-	    "search":         "Palabra Clave:",
+	    "search":         "Buscar:",
 	    "zeroRecords":    "Sin Registros Encontrados",
 	    "paginate": {
 	        "first":      "Primero",

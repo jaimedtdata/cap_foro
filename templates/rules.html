@@ -7,7 +7,7 @@
         <div class="col-md-3">
             <h4 class="text-center">Normas Legales</h4>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-9">
             <form class="ml-1">
                 <div class="form-row">
                     <div class="input-group">
@@ -19,15 +19,17 @@
                 </div>
             </form>
         </div>
-    </div>
-    <div class="row mt-2">
-        {% comment %} <div class="col-md-3">
-            {% include 'partials/_rulers_categories.html' %}
-        </div> {% endcomment %}
-        <div class="col-md-9">
+
+        <div class="col-md-12">
             {% include 'partials/_rulers_list.html' %}
         </div>
     </div>
+   
+        {% comment %} <div class="col-md-3">
+            {% include 'partials/_rulers_categories.html' %}
+        </div> {% endcomment %}
+
+
 </div>
 {% endblock content %}
 

@@ -16,7 +16,7 @@
                    <a href="{% url 'rules' %}"><i class="fas fa-balance-scale-left"></i>Busqueda Normas Legales</a>
                 </li>
                 <li>
-                   <a href="{% url 'rules' %}"><i class="fas fa-tasks"></i>Carga de Normas</a>
+                   <a href="{% url 'carga_rules' %}"><i class="fas fa-tasks"></i>Carga de Normas</a>
                 </li>
 
 
@@ -30,7 +30,7 @@
                    <a href="{% url 'foro' %}"><i class="fas fa-comments"></i>Foro Interactivo</a>
                 </li>
                 <li>
-                   <a href="{% url 'rules' %}"><i class="fas fa-tasks"></i>Carga de Normas</a>
+                   <a href="{% url 'carga_rules' %}"><i class="fas fa-tasks"></i>Define Temas</a>
                 </li>
 
 
@@ -39,23 +39,21 @@
 
 
         <li>
-            <a href="#uielementsmenu3" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-money-bill-wave-alt"></i> Pasarela de Pagos</a>
+            <a href="#uielementsmenu3" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-money-bill-wave-alt"></i> Suscripcion y Pagos</a>
             <ul class="collapse list-unstyled " id="uielementsmenu3">
                 <li>
-                   <a href="{% url 'member' %}"><i class="fas fa-comments"></i>Gestio de Miembros</a>
+                   <a href="{% url 'member' %}"><i class="fas fa-comments"></i>Gestion de Miembros</a>
                 </li>
                 <li>
-                   <a href="{% url 'foro' %}"><i class="fas fa-comments"></i>Pagos</a>
+                   <a href="{% url 'plan' %}"><i class="fas fa-comments"></i>Pagos</a>
                 </li>
                 <li>
-                   <a href="{% url 'rules' %}"><i class="fas fa-tasks"></i>Registro de Planes</a>
+                   <a href="{% url 'plan' %}"><i class="fas fa-tasks"></i>Registro de Planes</a>
                 </li>
                  <li>
                    <a href="{% url 'configs' %}"><i class="fas fa-tasks"></i>Configuracion</a>
                 </li>
-                 <li>
-                   <a href="{% url 'liquid' %}"><i class="fas fa-tasks"></i>liquidacion</a>
-                </li>
+
 
 
             </ul>
@@ -64,10 +62,10 @@
             <a href="#uielementsmenu2" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-wrench"></i> Parametros</a>
             <ul class="collapse list-unstyled " id="uielementsmenu2">
                 <li>
-                   <a href="{% url 'foro' %}"><i class="fas fa-comments"></i>Foro Interactivo</a>
+                    <a href="{% url 'users' %}"><i class="fas fa-user"></i>Roles y Permisos Usuarios</a>
                 </li>
                 <li>
-                   <a href="{% url 'rules' %}"><i class="fas fa-tasks"></i>Carga de Normas</a>
+                   <a href="{% url 'rules' %}"><i class="fas fa-tasks"></i>Datos Varios</a>
                 </li>
 
 
@@ -76,11 +74,13 @@
 
 
 
-       <li class="nav-link {% if admin %}active{% endif %}">
-            <a href="{% url 'users' %}"><i class="fas fa-user"></i>Roles y Permisos Usuarios</a>
+
+          <li class=" {% if admin %}active{% endif %}">
+            <a href="{% url 'preguntas' %}"><i class="fas fa-user"></i>Preguntas Frecuentes</a>
         </li>
-       
-    
+          <li class=" {% if admin %}active{% endif %}">
+            <a href="{% url 'plan_list' %}"><i class="fas fa-user"></i>Planes y Suscripción</a>
+        </li>
         
     </ul>
 </nav>

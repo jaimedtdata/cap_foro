@@ -20,7 +20,7 @@ DJANGO_APPS = (
 )
 
 LOCAL_APPS = (
-    'apps.demo',
+    'apps',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS

@@ -57,7 +57,7 @@ a[aria-expanded="true"] {
 
 #sidebar ul ul a {
     font-size: 1rem;
-    background: #f8f9fa;
+    background: #ffc10740;
 }
 
 #sidebar a[data-toggle="collapse"] {

@@ -17,6 +17,17 @@ class User(models.Model):
     class Meta:  
         db_table = "user_member"
 
+class Plan(models.Model):
+    id = models.AutoField(primary_key=True)
+    planame = models.CharField(max_length=200, blank=False,
+        help_text='Nombre de Plan',
+        verbose_name='Plan')      
+    cost = models.DecimalField(max_digits = 10,decimal_places = 2)
+
+
+
+
+
 """
 Forum 
 forum_id, forum_name,forum_type, forum_description"
