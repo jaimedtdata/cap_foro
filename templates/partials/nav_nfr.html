@@ -2,7 +2,7 @@
 
 <nav id="sidebar" class="{% if nonav %}active{% endif %}">
     <div class="sidebar-header">
-        <img src="{% static 'img/bootstraper-logo.png' %}" alt="bootraper logo" width="170" class="app-logo">
+        <img src="{% static 'img/logo_cap1.png' %}" alt="bootraper logo" width="170" class="app-logo">
     </div>
     <ul class="list-unstyled components text-secondary">
         <li class="dropdown-toggle no-caret-down {% if dashboard %}active{% endif %}">
@@ -10,7 +10,7 @@
         </li>
 
         <li>
-            <a href="#uielementsmenu" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-book"></i> Normas Legales</a>
+            <a href="#uielementsmenu" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-book"></i> Normativa</a>
             <ul class="collapse list-unstyled " id="uielementsmenu">
                 <li>
                    <a href="{% url 'rules' %}"><i class="fas fa-balance-scale-left"></i>Busqueda Normas Legales</a>
@@ -45,9 +45,6 @@
                    <a href="{% url 'member' %}"><i class="fas fa-comments"></i>Gestion de Miembros</a>
                 </li>
                 <li>
-                   <a href="{% url 'plan' %}"><i class="fas fa-comments"></i>Pagos</a>
-                </li>
-                <li>
                    <a href="{% url 'plan' %}"><i class="fas fa-tasks"></i>Registro de Planes</a>
                 </li>
                  <li>
@@ -59,13 +56,13 @@
             </ul>
         </li>
         <li>
-            <a href="#uielementsmenu2" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-wrench"></i> Parametros</a>
+            <a href="#uielementsmenu2" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-wrench"></i> Configuracion</a>
             <ul class="collapse list-unstyled " id="uielementsmenu2">
                 <li>
                     <a href="{% url 'users' %}"><i class="fas fa-user"></i>Roles y Permisos Usuarios</a>
                 </li>
                 <li>
-                   <a href="{% url 'rules' %}"><i class="fas fa-tasks"></i>Datos Varios</a>
+                   <a href="{% url 'admin:index' %}"><i class="fas fa-tasks"></i>Adm. Base de Datos</a>
                 </li>
 
 

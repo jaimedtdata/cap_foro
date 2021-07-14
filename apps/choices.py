@@ -1,4 +1,43 @@
+PROFESSION_CHOICES = (
+    ('A', 'ARQUITECTO'),
+    ('I', 'INGENIERO'),
+)
 
+PERSON_TYPE_CHOICES = (
+    ('N', 'NATURAL'),
+    ('J', 'JURÍDICA'),
+)
+
+USER_ROLES = (
+	('AOT', 'ANALISTA DE ORIENTACIÓN TÉCNICA'),
+	('AP', 'ARQUITECTO PROYECTISTA'),
+	('DEL', 'ARQUITECTO DELEGADO'),
+	('ESP', 'ARQUITECTO ESPECIALISTA'),
+	('AT', 'ASUNTOS TÉCNICOS'),
+	('CAJA', 'CAJA'),
+	('CATR', 'COMITÉ DE ASUNTOS TÉCNICOS REGIONAL (CATR)'),
+	('CZ', 'COORDINADOR ZONAL'),
+	('CD', 'COORDINADOR DISTRITAL'),
+	('ADHOC', 'DELEGADO AD-HOC'),
+	('G', 'GERENCIA'),
+	('PRES', 'PRESIDENTE DE COMISIÓN TÉCNICA'),
+	('PROP', 'PROPIETARIO/ADMINISTRADO'),
+	('SYS', 'SISTEMAS'),
+)
+
+ADHOC_INSTITUTION_CHOICES = (
+	('','---------'),
+	('MC','MINISTERIO DE CULTURA'),
+	('SE','SERNANP'),
+)
+
+SPECIALTY_CHOICES = (
+	('','---------'),
+	('SA','SALUD'),
+	('SCI','SEGURIDAD CONTRA INCENDIOS'),
+	('VI','VIAL'),
+	('O','OTROS'),
+)
 
 AREAS_CHOICES = (
 	'Legal',
@@ -167,10 +206,10 @@ def get_rules():
 def get_foro_items():
 	category_list = (
 		{
-			'title': 'Arquitectura',
+			'title': 'Temas Normativos',
 			'items': [
 				{
-					'title':'Perfiles Profesionales',
+					'title':'Licencias, Procedimientos Administrativos  para Licencias de Edificación',
 					'themes_count': random.randint(10,50),
 					'messages_count': random.randint(50,200),
 					'last_messages': (
@@ -202,7 +241,7 @@ def get_foro_items():
 			],
 		},
 		{
-			'title': 'Comunidad',
+			'title': 'Jurisprudencia Normativa',
 			'items': [
 				{
 					'title':'Noticias',
@@ -252,10 +291,10 @@ def get_foro_items():
 			],
 		},
 		{
-			'title': 'Sociedad',
+			'title': 'Propuesta de Normas en Consulta',
 			'items': [
 				{
-					'title':'Participaciones',
+					'title':'Licencias, Procedimientos Administrativos  para Licencias de Edificación',
 					'themes_count': random.randint(10,50),
 					'messages_count': random.randint(50,200),
 					'last_messages': (

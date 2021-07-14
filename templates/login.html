@@ -35,22 +35,26 @@
                         <img class="brand" src="{% static 'img/logo_cap.png' %}" alt="CAP LOGO">
                         <h6 class="mb-4 text-muted">Plataforma Digital Interactiva de Normas</h6>
                       </div>
-                      <form class="user">
+                      
+                      {% block form %}
+                         <form method="POST" id="login-form">
+                    {% csrf_token %}
                         <div class="form-group">
-                          <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                          
+                         {{ form.username }}
+                         
                         </div>
                         <div class="form-group">
-                          <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                          
+                          {{ form.password }}
                         </div>
-                        <div class="form-group">
-                          <div class="custom-control custom-checkbox small">
-                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                            <label class="custom-control-label" for="customCheck">Recuerdame</label>
-                          </div>
-                        </div>
-                        <a href="{% url 'dash' %}" class="btn btn-primary btn-user btn-block">
-                          Ingresar
-                        </a>
+
+    
+
+                    {% include 'base/partials/_form_errors.html' %}
+                    <div class="btns">
+                        <button type="submit" class="btn btn-primary btn-user btn-block" >Ingresar</button>
+                    </div>
                         <hr>
                         <a href="index.html" class="btn btn-google btn-user btn-block">
                           <i class="fab fa-google fa-fw"></i> Ingresar con Google
@@ -66,6 +70,9 @@
                       <div class="text-center">
                         <a class="small" href="register.html">Crear una nueva cuenta!</a>
                       </div>
+
+                         </form>
+                {% endblock %}
                     </div>
                   </div>
                 </div>
@@ -77,6 +84,9 @@
         </div>
     
       </div>
+
+      
+
     <!-- <script src="{% static 'vendor/jquery3/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap4/js/bootstrap.min.js' %}"></script>  -->
 
@@ -86,7 +96,9 @@
 
     <!-- Core plugin JavaScript-->
     <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-
+    {% block js %}
+    <script src="{% static 'js/login.js' %}"></script>
+    {% endblock %}
 
 </body>
 </html>

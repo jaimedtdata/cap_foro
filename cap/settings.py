@@ -1,5 +1,6 @@
 from pathlib import Path
 import dj_database_url
+from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -14,6 +15,7 @@ DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django_extensions',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -90,7 +92,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
-
+LOGIN_REDIRECT_URL = reverse_lazy('dash')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ((BASE_DIR / 'static'),)
 STATIC_ROOT = BASE_DIR / 's3'

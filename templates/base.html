@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
     <meta charset="utf-8">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,6 +23,15 @@
     {% block css %}
     {% endblock %}
 </head>
+<header class="top no-print">
+    <a href="{% url 'dashboard:dashboard' %}"><img src="{% static 'img/logo_cap.png' %}" alt="CAP Logo" class="app-logo"></a>
+    <div class="social-icons">
+    	<a href="#"><i class="fab fa-facebook-square"></i></a>
+    	<a href="#"><i class="fab fa-instagram"></i></a>
+    	<a href="#"><i class="fab fa-twitter"></i></a>
+    	<a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+</header>
 <body>
     <div class="wrapper">
         {% block nav %}

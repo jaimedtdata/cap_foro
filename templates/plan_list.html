@@ -160,6 +160,68 @@
     </div>
 
 
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detalle de pago</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+</head>
+<body>
+
+    <br>
+
+    <div class="container">
+        <h1 class="text-center">Pago con Visa</h1>
+        <hr>
+        <h3>Información del pago</h3>
+        <b style="padding-left:20px;">Importe a pagar: </b> $ 1 <br>
+        <b style="padding-left:20px;">Número de pedido: </b>  <br>
+        <b style="padding-left:20px;">Concepto: </b> Detalle de pago <br>
+        <b style="padding-left:20px;">Fecha: </b> 12/12/2020 <br>
+        <hr>
+        <!-- <h3>Realiza el pago</h3> -->
+        <input type="checkbox" name="ckbTerms" id="ckbTerms" onclick="visaNetEc3()"> <label for="ckbTerms">Acepto los <a href="#" target="_blank">Términos y condiciones</a></label>
+        <form id="frmVisaNet" action="http://localhost:8082/PagoWebPhp/finalizar.php?amount=1&purchaseNumber=21">
+            <script src="https://static-content-qas.vnforapps.com/v2/js/checkout.js?qa=true" 
+                data-sessiontoken="84182eb6d9a65acbdbccd26913462a054a8c4ee084a6ae3feb39d589cf016892"
+                data-channel="web"
+                data-merchantid="750000777"
+                data-merchantlogo="http://localhost:8082/PagoWebPhp/assets/img/logo.png"
+                data-purchasenumber="21"
+                data-amount="1"
+                data-expirationminutes="5"
+                data-timeouturl="http://localhost:8082/PagoWebPhp/"
+            ></script>
+        </form>
+    </div>
+    
+</body>
+<script src="assets/js/script.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 {% endblock content %}
 

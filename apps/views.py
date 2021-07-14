@@ -4,20 +4,67 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from apps.forms import (LiquidForm, SessionFormset, ComisionForm,PlanForm,
                              ArquitectFormset, EntrevistaFormset, EntrevistaForm, MUNI_CHOICES,
-                             PROVINCE_CHOICES, RulesForm,)
+                             PROVINCE_CHOICES, RulesForm, UserLoginForm)
 from apps.choices import (AREAS_CHOICES, PUESTOS_CHOICES,
                                works_list, get_rules, get_foro_items, get_themes, RULES_CATEGORIES, SANCTIONS_CATEGORIES, PREVENTIONS_CHOICES,
                                SPECIALTIES_CHOICES)
-
+from django.contrib.auth.views import (LoginView, LogoutView, 
+	PasswordResetView, PasswordResetDoneView,)
 from django.forms.models import model_to_dict
-from apps.models import User, Plan
+from apps.models import User, Plan, Policies_usage
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 
+
+
+
+
+class Login(LoginView):
+    authentication_form = UserLoginForm
+    template_name = 'login.html'
+
+    #def form_invalid(self, form):
+    #    return super(Login, self).form_invalid(form)
+
+
+#@login_required
 def preguntas(request):
-    plans = Plan.objects.all()
-    context = {'plans': plans}
+    cuestions = Policies_usage.objects.all()
+    context = {'cuestions': cuestions}
+    print (context)
     return render(request, 'preguntas.html', context)
+    
+
+
+
+def preguntas_edit(request, pk=None):
+    
+    if request.method == "POST":
+       form = PlanForm(request.POST) # Bound form
+       post = form.save(commit=False)
+       post.id=pk
+       post.save()
+       messages.success(request, 'Registro Guardado..!!')
+       return redirect('/plan')
+
+    else: 
+        print('GET')
+        if pk:
+            plans = Plan.objects.get(id=pk)  
+            data=model_to_dict(plans)  
+            context ={'form': PlanForm(initial=data)}
+            return render(request, 'plan_edit.html', context)
+        else:
+            form = PlanForm()
+            context ={'form': form}
+            return render(request, 'plan_edit.html',context)
+
+def preguntas_delete(request, pk):
+    print ('entro a borrar')
+    plans = Plan.objects.get(id=pk)
+    plans.delete()
+    return redirect('/plan')
 
 
 def plan_list(request):
@@ -59,7 +106,9 @@ def plan_edit(request, pk=None):
             form = PlanForm()
             context ={'form': form}
             return render(request, 'plan_edit.html',context)
-         
+
+
+
 def plan_delete(request, pk):
     print ('entro a borrar')
     plans = Plan.objects.get(id=pk)
@@ -67,8 +116,8 @@ def plan_delete(request, pk):
     return redirect('/plan')
 
 
-def login(request):
-    return render(request, 'login.html')
+#def login(request):
+#    return render(request, 'login.html')
 
 
 def dash(request):

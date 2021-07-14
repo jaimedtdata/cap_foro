@@ -1,5 +1,8 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
+USER_CONTROL = {'class': 'form-control', 'placeholder':'Usuario'}
+PASSWORD_CONTROL = {'class': 'form-control', 'placeholder':'Contraseña', 'type':'password'}
 
 
 
@@ -136,6 +139,17 @@ from .models import Plan
 #https://developer.mozilla.org/es/docs/Learn/Server-side/Django/Forms
 #https://stackoverflow.com/questions/2303268/djangos-forms-form-vs-forms-modelform
 #https://djangobook.com/mdj2-django-forms/
+
+
+
+class UserLoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(UserLoginForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update(USER_CONTROL)
+        self.fields['password'].widget.attrs.update(PASSWORD_CONTROL)
+
+
+
 class PlanForm(forms.ModelForm):
     #planame = forms.Field(required=False,label='Nombre Plan:',widget=forms.TextInput(attrs=FORM_CONTROL))
     #cost = forms.Field(required=False,label='costo:',widget=forms.NumberInput(attrs=DECIMAL_CONTROL))

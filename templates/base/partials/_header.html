@@ -19,7 +19,7 @@
     </form>
     <div class="nav-dropdown mr-4">
         <a href="" class="nav-item nav-link text-dark dropdown-toggle" data-toggle="dropdown">
-                {% if user.userprofile.photo %}
+                {% comment %} {% if user.userprofile.photo %}
                 <div class="photo-div">
                     <img src="{{ user.userprofile.photo.url }}" class="profile-photo">
                 </div>
@@ -27,14 +27,14 @@
             	<div class="user-icon">
         		  <h3><i class="fas fa-user-tie pt-2"></i></h3>
             	</div>
-                {% endif %}
+                {% endif %} {% endcomment %}
         	<span>
         		{{user.first_name|title}} {{user.last_name|title}}
         	</span> 
         	<i style="font-size: .8em;" class="fas fa-caret-down"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-leftt nav-link-menu">
-            <ul class="nav-list">
+            {% comment %} <ul class="nav-list">
                 <li><a href="" class="dropdown-item"><i class="fas fa-user text-black"></i> {{ user.username }}</a></li>
                 <li><a href="" class="dropdown-item"><i class="fas fa-signature {% if user.userprofile.is_signature_validated %}text-success{% else %}text-danger{% endif %}"></i> {{ user.userprofile.full_name }}</a></li>
                 <li><a href="" class="dropdown-item"><img src="{% static 'img/logo.png' %}" class="micro-logo"> {{ user.userprofile.tuition }}</a></li>
@@ -43,7 +43,7 @@
                 {% endif %}
                 <div class="dropdown-divider"></div>
                 <li><a href="" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
-            </ul>
+            </ul> {% endcomment %}
         </div>
     </div>
 </nav>
