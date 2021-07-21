@@ -3,6 +3,11 @@ PROFESSION_CHOICES = (
     ('I', 'INGENIERO'),
 )
 
+PLATAFORMA_TYPE_CHOICES = (
+    ('F', 'FORO'),
+    ('N', 'NORMAS'),
+)
+
 PERSON_TYPE_CHOICES = (
     ('N', 'NATURAL'),
     ('J', 'JURÍDICA'),

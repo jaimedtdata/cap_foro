@@ -23,8 +23,12 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'apps',
+    'foro',
 
 )
+
+# por Default agrega id automatico
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 

@@ -9,7 +9,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     #path('', login, name='login'),
-    
+    #path('foro/', include('foro.urls')),
     path('', Login.as_view(), name='login'),
     path('login/', Login.as_view(), name='login'),
     path('dash/', dash, name='dash'),

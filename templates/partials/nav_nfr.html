@@ -27,7 +27,7 @@
             <a href="{% url 'foro' %}" class="dropdown-toggle no-caret-down"><i class="fas fa-comments"></i> Foro Interactivo</a>
         </li>
 
-
+{% comment %}
         <li>
             <a href="#uielementsmenu3" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-money-bill-wave-alt"></i> Suscripcion y Pagos</a>
             <ul class="collapse list-unstyled " id="uielementsmenu3">
@@ -39,12 +39,13 @@
                 </li>
                  {% comment %} <li>
                    <a href="{% url 'configs' %}"><i class="fas fa-tasks"></i>Configuracion</a>
-                </li> {% endcomment %}
+                </li>
 
 
 
             </ul>
         </li>
+         {% endcomment %}
         <li>
             <a href="#uielementsmenu2" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-wrench"></i> Configuracion</a>
             <ul class="collapse list-unstyled " id="uielementsmenu2">
