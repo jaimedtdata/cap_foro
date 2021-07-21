@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.apps import apps
-from .models import (Categories_Normas,)
+from .models import (Location_Normas,Control_payment)
+from django.contrib.sessions.models import Session
+from django.contrib.contenttypes.models import ContentType
+
 
 
 class ListAdminMixin(object):
@@ -9,12 +12,11 @@ class ListAdminMixin(object):
         super(ListAdminMixin, self).__init__(model, admin_site)
 
 # Register your models here.
-class MunicipalitiesAdmin(admin.ModelAdmin):
-	list_display =['category_name']
-	list_filter = ['category_name']
-	search_fields = ['category_name']
-
-admin.site.register(Categories_Normas, MunicipalitiesAdmin)
+class Control_paymentAdmin(admin.ModelAdmin):
+    list_filter = ['id_plan']
+    search_fields = ['member']
+    list_display =['member','id_plan','pay_method','pay_import','validity_date_start','validity_date_finish']
+admin.site.register(Control_payment, Control_paymentAdmin)
 
 models = apps.get_models()
 
@@ -22,13 +24,16 @@ models = apps.get_models()
 for model in models:
     admin_class = type('AdminClass', (ListAdminMixin, admin.ModelAdmin), {})
     try:
+        #if 'django.contrib.sessions.models.Session' == model:
+        #print (model)
         admin.site.register(model, admin_class)
     except admin.sites.AlreadyRegistered:
         pass
 
+admin.site.unregister(Session)
+admin.site.unregister(ContentType)
 
-
-
+#https://realpython.com/customize-django-admin-python/
 # models = apps.get_models()
 
 # for model in models:

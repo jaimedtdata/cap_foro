@@ -20,6 +20,9 @@ from django.contrib.auth.decorators import login_required
 
 
 
+def signup(request):
+    return render(request, 'sign-up.html')
+
 class Login(LoginView):
     authentication_form = UserLoginForm
     template_name = 'login.html'
@@ -66,6 +69,10 @@ def preguntas_delete(request, pk):
     plans.delete()
     return redirect('/plan')
 
+def checkout(request):
+    plans = Plan.objects.all()
+    context = {'plans': plans}
+    return render(request, 'checkout.html', context)
 
 def plan_list(request):
     plans = Plan.objects.all()
@@ -141,7 +148,7 @@ def works(request):
         context['alert'] = 'Registros Filtrados'
     return render(request, 'works.html', context)
 
-
+@login_required
 def rules(request):
     context = {
         'rules': True,

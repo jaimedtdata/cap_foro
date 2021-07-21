@@ -23,6 +23,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'apps',
+
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
@@ -96,3 +97,8 @@ LOGIN_REDIRECT_URL = reverse_lazy('dash')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ((BASE_DIR / 'static'),)
 STATIC_ROOT = BASE_DIR / 's3'
+
+# activar iframe
+# X_FRAME_OPTIONS = 'ALLOWALL'
+
+# XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']

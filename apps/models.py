@@ -32,18 +32,18 @@ class Member(models.Model):
 		help_text='Usuario', null=True, blank=True,
 		verbose_name='Usuario')
     id = models.AutoField(primary_key=True)
-    full_name = models.CharField(max_length=200, blank=False,default='Nombre completo',
-        help_text='Apellidos y Nombres',
-        verbose_name='Apellidos y Nombres')
+    first_surname = models.CharField(max_length=50, blank=True,
+        help_text='Apellido Paterno',
+        verbose_name='Apellido Paterno')
+    second_surname = models.CharField(max_length=50, blank=True,
+        help_text='Apellido Materno',
+        verbose_name='Apellido Materno')
     names = models.CharField(max_length=50, blank=False,
         help_text='Nombres O Razón Social',
         verbose_name='Nombres')
-    first_surname = models.CharField(max_length=50, blank=True,
-        help_text='Primer Apellido',
-        verbose_name='Primer Apellido')
-    second_surname = models.CharField(max_length=50, blank=True,
-        help_text='Segundo Apellido',
-        verbose_name='Segundo Apellido')
+    full_name = models.CharField(max_length=200, blank=False,default='Nombre completo',
+        help_text='Apellidos y Nombres',
+        verbose_name='Apellidos y Nombres')
     person_type = models.CharField(max_length=1, default='N',
         help_text='Tipo de Persona', choices=PERSON_TYPE_CHOICES,
         verbose_name='Tipo de Persona', blank=False)
@@ -71,13 +71,19 @@ class Member(models.Model):
     address = models.CharField(max_length=200, blank=True,
         help_text='Dirección',
         verbose_name='Dirección')
-    is_signature_validated = models.BooleanField(default=False,
-        help_text='Marcado si la firma está validada por el CAP',
-        verbose_name='Firma Validada')
-    signature = models.ImageField(
-        upload_to=upload_signature, blank=False,
-        help_text='Suba una imágen escaneada de su sello y firma, los cuales será utilizados como validación de las solicitudes que realice através del portal',
-        verbose_name='Firma')
+    # is_signature_validated = models.BooleanField(blank=True,
+    #     help_text='Marcado si la firma está validada por el CAP',
+    #     verbose_name='Firma Validada')
+    # signature = models.ImageField(
+    #     upload_to=upload_signature, blank=True,
+    #     help_text='Suba una imágen escaneada de su sello y firma, los cuales será utilizados como validación de las solicitudes que realice através del portal',
+    #     verbose_name='Firma')
+    area_interest = models.CharField(max_length=200, blank=True,
+        help_text='areas de interes',
+        verbose_name='areas de interes')
+    institution = models.CharField(max_length=200, blank=True,
+        help_text='Institucion',
+        verbose_name='Institucion')
     photo = models.ImageField(
         upload_to=upload_photos, blank=True, null=True,
         help_text='Suba una fotografía en tamaño pasaporte o carnet',
@@ -86,15 +92,10 @@ class Member(models.Model):
         blank=False, null=False, auto_now_add=True,
         help_text='Fecha de Registro',
         verbose_name='Fecha de Registro')
-    area_interest = models.CharField(max_length=200, blank=True,
-        help_text='areas de interes',
-        verbose_name='areas de interes')
-    institution = models.CharField(max_length=200, blank=True,
-        help_text='Institucion',
-        verbose_name='Institucion')
+
     
     def __str__(self):
-        return self.firstname + " " + self.lastname
+        return self.full_name 
  
     class Meta:
         ordering = ['created']
@@ -111,15 +112,15 @@ class Plan(models.Model):
         help_text='Nombre de Plan',
         verbose_name='Plan')      
     cost = models.DecimalField(max_digits = 10,decimal_places = 2)
-    validity_date_start = models.DateTimeField(
+    validity_date_start = models.DateField(
         blank=False, null=False, auto_now_add=False,
         help_text='Fecha',
         verbose_name='Fecha Inicio')
-    validity_date_finish = models.DateTimeField(
+    validity_date_finish = models.DateField(
         blank=False, null=False, auto_now_add=False,
         help_text='Fecha',
         verbose_name='Fecha Fin')
-    register_date_time = models.DateTimeField(
+    register_date_time = models.DateField(
         blank=False, null=False, auto_now_add=True,
         help_text='Fecha de Registro',
         verbose_name='Fecha de Registro')
@@ -127,25 +128,30 @@ class Plan(models.Model):
     class Meta:
         verbose_name_plural = 'Planes de Suscripcion'
 
-
+    def __str__(self):
+        return self.planame 
 
 class Control_payment(models.Model):
     id = models.AutoField(primary_key=True)
-    Id_plan = models.CharField(max_length=200, blank=False,
-        help_text='Nombre de Plan',
-        verbose_name='Plan')    
-    Id_user = models.CharField(max_length=200, blank=False,
-        help_text='Nombre de Plan',
-        verbose_name='Plan')          
+    member = models.OneToOneField(
+		Member, on_delete=models.CASCADE,
+		help_text='Miembros', null=True, blank=True,
+		verbose_name='Miembros')
+    id_plan = models.OneToOneField(
+		Plan, on_delete=models.CASCADE,
+		help_text='Plan Suscrito', null=True, blank=True,
+		verbose_name='Plan de Suscripcion')        
     pay_method =  models.CharField(max_length=200, blank=False,
-        help_text='Nombre de Plan',
-        verbose_name='Plan')  
-    pay_import = models.DecimalField(max_digits = 10,decimal_places = 2)
-    validity_date_start = models.DateTimeField(
+        help_text='Metodo Pago',
+        verbose_name='Metodo Pago')  
+    pay_import = models.DecimalField(max_digits = 10,decimal_places = 2,
+        help_text='Importe Pagado',
+        verbose_name='Importe Pagado')  
+    validity_date_start = models.DateField(
         blank=False, null=False, auto_now_add=False,
         help_text='Fecha',
         verbose_name='Fecha Inicio')
-    validity_date_finish = models.DateTimeField(
+    validity_date_finish = models.DateField(
         blank=False, null=False, auto_now_add=False,
         help_text='Fecha',
         verbose_name='Fecha Fin')
@@ -172,11 +178,11 @@ class Policies_usage(models.Model):
         help_text='Respuesta',
         verbose_name='Respuesta')      
     platform = models.DecimalField(max_digits = 10,decimal_places = 2)
-    validity_date_start = models.DateTimeField(
+    validity_date_start = models.DateField(
         blank=False, null=False, auto_now_add=False,
         help_text='Fecha',
         verbose_name='Fecha Inicio')
-    validity_date_finish = models.DateTimeField(
+    validity_date_finish = models.DateField(
         blank=False, null=False, auto_now_add=False,
         help_text='Fecha',
         verbose_name='Fecha Fin')
@@ -245,12 +251,8 @@ class Master_Normas(models.Model):
         verbose_name='Locacion')          
     validity_date_start = models.DateField(
         blank=False, null=False, auto_now_add=False,
-        help_text='Fecha Inicio',
-        verbose_name='Fecha Inicio')
-    validity_date_finish = models.DateField(
-        blank=False, null=False, auto_now_add=False,
-        help_text='Fecha Fin',
-        verbose_name='Fecha Fin')
+        help_text='Fecha Publicacion',
+        verbose_name='Fecha Publicacion')
     keywords = models.CharField(max_length=200, blank=False,
         help_text='Palabras Clave',
         verbose_name='Registre palabras clave') 
@@ -289,16 +291,8 @@ class Area_interest(models.Model):
 class Categories_foro(models.Model):
     id = models.AutoField(primary_key=True)
     category_name = models.CharField(max_length=200, blank=False,
-        help_text='Nombre de Plan',
-        verbose_name='Plan')      
-    validity_date_start = models.DateTimeField(
-        blank=False, null=False, auto_now_add=False,
-        help_text='Fecha Inicio',
-        verbose_name='Fecha Fin')
-    validity_date_finish = models.DateTimeField(
-        blank=False, null=False, auto_now_add=False,
-        help_text='Fecha Inicio',
-        verbose_name='Fecha Fin')
+        help_text='Nombre de Categoria',
+        verbose_name='Nombre de Categoria')      
     register_date_time = models.DateTimeField(
         blank=False, null=False, auto_now_add=True,
         help_text='Fecha de Registro',
@@ -310,16 +304,9 @@ class Categories_foro(models.Model):
 class Subcategories_foro(models.Model):
     id = models.AutoField(primary_key=True)
     subcategory_name = models.CharField(max_length=200, blank=False,
-        help_text='Nombre de Plan',
-        verbose_name='Plan')      
-    validity_date_start = models.DateTimeField(
-        blank=False, null=False, auto_now_add=False,
-        help_text='Fecha Inicio',
-        verbose_name='Fecha Fin')
-    validity_date_finish = models.DateTimeField(
-        blank=False, null=False, auto_now_add=False,
-        help_text='Fecha Inicio',
-        verbose_name='Fecha Fin')
+        help_text='Subcategoria',
+        verbose_name='Subcategoria')      
+
     register_date_time = models.DateTimeField(
         blank=False, null=False, auto_now_add=True,
         help_text='Fecha de Registro',
@@ -331,17 +318,9 @@ class Subcategories_foro(models.Model):
 
 class themas_foro(models.Model):
     id = models.AutoField(primary_key=True)
-    Location_name = models.CharField(max_length=200, blank=False,
-        help_text='Nombre de Plan',
+    themas_name = models.CharField(max_length=200, blank=False,
+        help_text='Nombre de Tema',
         verbose_name='Plan')      
-    validity_date_start = models.DateTimeField(
-        blank=False, null=False, auto_now_add=False,
-        help_text='Fecha Inicio',
-        verbose_name='Fecha Fin')
-    validity_date_finish = models.DateTimeField(
-        blank=False, null=False, auto_now_add=False,
-        help_text='Fecha Inicio',
-        verbose_name='Fecha Fin')
     register_date_time = models.DateTimeField(
         blank=False, null=False, auto_now_add=True,
         help_text='Fecha de Registro',
