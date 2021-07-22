@@ -46,19 +46,21 @@
             </ul>
         </li>
          {% endcomment %}
-        <li>
+
+         <li>
+            <a href="{% url 'admin:index' %}" class="dropdown-toggle no-caret-down"><i class="fas fa-tasks"></i>Adm. Base de Datos</a>
+        </li>
+        {% comment %} <li>
             <a href="#uielementsmenu2" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-wrench"></i> Configuracion</a>
             <ul class="collapse list-unstyled " id="uielementsmenu2">
                 <li>
                     <a href="{% url 'admin:apps_member_changelist' %}"><i class="fas fa-user"></i>Roles y Permisos Usuarios</a>
                 </li>
-                <li>
-                   <a href="{% url 'admin:index' %}"><i class="fas fa-tasks"></i>Adm. Base de Datos</a>
-                </li>
+               
 
 
             </ul>
-        </li>
+        </li> {% endcomment %}
 
 
 
