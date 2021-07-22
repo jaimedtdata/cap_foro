@@ -64,12 +64,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cap.wsgi.application'
 
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bdnormativa',
+        'USER': 'postgres',
+        'PASSWORD': 'MZB2LT13',
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
+
+
 
 db_from_env = dj_database_url.config()
 

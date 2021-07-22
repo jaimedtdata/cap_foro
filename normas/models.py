@@ -76,7 +76,10 @@ class Master_Normas(models.Model):
         verbose_name='SubCategoria')     
     location_name =  models.ForeignKey(Location_Normas, on_delete=models.CASCADE,
         help_text='Registro de Locacion',
-        verbose_name='Locacion')          
+        verbose_name='Locacion')
+    norma_name = models.CharField(max_length=200, blank=False,
+        help_text='Nombre Norma',
+        verbose_name='Norma')                
     validity_date_start = models.DateField(
         blank=False, null=False, auto_now_add=False,
         help_text='Fecha Publicacion',
