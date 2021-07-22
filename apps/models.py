@@ -138,9 +138,10 @@ class Control_payment(models.Model):
 		Plan, on_delete=models.CASCADE,
 		help_text='Plan Suscrito', null=True, blank=True,
 		verbose_name='Plan de Suscripcion')        
-    pay_method =  models.CharField(max_length=200, blank=False,
-        help_text='Metodo Pago',
-        verbose_name='Metodo Pago')  
+    pay_method = models.CharField(max_length=1,
+        help_text='Metodo de Pago', choices=METODPAY_CHOICES,
+        verbose_name='Metodo de Pago', blank=True)
+        
     pay_import = models.DecimalField(max_digits = 10,decimal_places = 2,
         help_text='Importe Pagado',
         verbose_name='Importe Pagado')  
@@ -159,14 +160,8 @@ class Control_payment(models.Model):
     class Meta:
         verbose_name_plural = 'Control de Pagos'
 
-"""
-
- * TABLAS NORMAS 
-
-"""
-
-
 class Policies_usage(models.Model):
+    
     
     title = models.CharField(max_length=200, blank=False,
         help_text='Titulo de Consulta',
@@ -191,167 +186,11 @@ class Policies_usage(models.Model):
         verbose_name='Fecha de Registro')
     class Meta:
         verbose_name_plural = 'Preguntas Frecuentes'
-
-
-
-class Categories_Normas(models.Model):
-    
-    category_name = models.CharField(max_length=200, blank=False,
-        help_text='Nombre de Categoria',
-        verbose_name='Nombre de la Categoria')      
-
-    register_date_time = models.DateTimeField(
-        blank=False, null=False, auto_now_add=True,
-        help_text='Fecha de Registro',
-        verbose_name='Fecha de Registro')
-    
-    class Meta:
-        verbose_name_plural = 'Normas - Categorias'
-    def __str__(self):
-        return self.category_name
-    
-
-class Subcategories_Normas(models.Model):
-    
-    subcategory_name = models.CharField(max_length=200, blank=False,
-        help_text='Nombre de sub Categoria',
-        verbose_name='sub Categoria')      
-    register_date_time = models.DateTimeField(
-        blank=False, null=False, auto_now_add=True,
-        help_text='Fecha de Registro',
-        verbose_name='Fecha de Registro')
-    class Meta:
-        verbose_name_plural = 'Normas - SubCategoria'
-    def __str__(self):
-        return self.subcategory_name    
-
-class Location_Normas(models.Model):
-    
-    Location_name = models.CharField(max_length=200, blank=False,
-        help_text='Nombre Locacion',
-        verbose_name='Locacion')      
-    register_date_time = models.DateTimeField(
-        blank=False, null=False, auto_now_add=True,
-        help_text='Fecha de Registro',
-        verbose_name='Fecha de Registro')
-    class Meta:
-        verbose_name_plural = 'Normas - Locacion'
-
-class Master_Normas(models.Model):
-    
-    category_name = models.ForeignKey(Categories_Normas, on_delete=models.CASCADE,
-        help_text='registro de Categoria',
-        verbose_name='Categoria')     
-    subcategory_name = models.ForeignKey(Subcategories_Normas, on_delete=models.CASCADE,
-        help_text='registro de SubCategoria',
-        verbose_name='SubCategoria')     
-    location_name =  models.ForeignKey(Location_Normas, on_delete=models.CASCADE,
-        help_text='Registro de Locacion',
-        verbose_name='Locacion')          
-    validity_date_start = models.DateField(
-        blank=False, null=False, auto_now_add=False,
-        help_text='Fecha Publicacion',
-        verbose_name='Fecha Publicacion')
-    keywords = models.CharField(max_length=200, blank=False,
-        help_text='Palabras Clave',
-        verbose_name='Registre palabras clave') 
-    file = models.FileField(
-        upload_to=upload_file, blank=False,
-        help_text='Suba el archivo o base legal',
-        verbose_name='File')
-    register_date_time = models.DateTimeField(
-        blank=False, null=False, auto_now_add=True,
-        help_text='Fecha de Registro',
-        verbose_name='Fecha de Registro')
-    class Meta:
-        verbose_name_plural = 'Normas - Registro Principal'
-
 """
 
- * TABLAS FORO 
+ * TABLAS NORMAS 
 
 """
-
-
-class Area_interest(models.Model):
-    
-    nombre_area = models.CharField(max_length=200, blank=False,
-        help_text='Nombre de Area',
-        verbose_name='Area')      
-    register_date_time = models.DateTimeField(
-        blank=False, null=False, auto_now_add=True,
-        help_text='Fecha de Registro',
-        verbose_name='Fecha de Registro')
-    class Meta:
-        verbose_name_plural = 'Areas de Interes'
-
-
-
-class Categories_foro(models.Model):
-    category_name = models.CharField(max_length=200, blank=False,
-        help_text='Nombre de Categoria',
-        verbose_name='Nombre de Categoria')      
-    register_date_time = models.DateTimeField(
-        blank=False, null=False, auto_now_add=True,
-        help_text='Fecha de Registro',
-        verbose_name='Fecha de Registro')
-    class Meta:
-        verbose_name_plural = 'Foro Categorias'
-    def __str__(self):
-        return self.category_name    
-
-class Subcategories_foro(models.Model):
-    categories = models.ForeignKey(Categories_foro,
-        on_delete=models.CASCADE,)
-    subcategory_name = models.CharField(max_length=200, blank=False,
-        help_text='Subcategoria',
-        verbose_name='Subcategoria')      
-
-    register_date_time = models.DateTimeField(
-        blank=False, null=False, auto_now_add=True,
-        help_text='Fecha de Registro',
-        verbose_name='Fecha de Registro')
-    class Meta:
-        verbose_name_plural = 'Foro SubCategorias'
-    def __str__(self):
-        return self.subcategory_name    
-
-class Themas_foro(models.Model):
-    subcategories =  subcategories = models.ForeignKey(Subcategories_foro,
-        on_delete=models.CASCADE,)
-    themas_name = models.CharField(max_length=200, blank=False,
-        help_text='Nombre de Tema',
-        verbose_name='Nombre de Tema')      
-    register_date_time = models.DateTimeField(
-        blank=False, null=False, auto_now_add=True,
-        help_text='Fecha de Registro',
-        verbose_name='Fecha de Registro')
-    class Meta:
-        verbose_name_plural = 'Foro Temas'
-    def __str__(self):
-        return self.themas_name   
-
-
-class Coments_foro(models.Model):
-    themas =  models.ForeignKey(Themas_foro,
-        on_delete=models.CASCADE,
-        help_text='Temas', blank=True,
-        verbose_name='Temas')
-    user = models.ForeignKey(User,
-        on_delete=models.CASCADE,)
-    coments = models.CharField(max_length=200, blank=False,
-        help_text='comentario',
-        verbose_name='comentario')      
-    likes = models.PositiveSmallIntegerField(default=0,help_text='Likes', verbose_name='Likes')
-    dislikes = models.PositiveSmallIntegerField(default=0,help_text='Dislikes', verbose_name='Dislikes')
-    register_date_time = models.DateTimeField(
-        blank=False, null=False, auto_now_add=True,
-        help_text='Fecha de Registro',
-        verbose_name='Fecha de Registro')
-    class Meta:
-        verbose_name_plural = 'Foro Comentarios'
-    def __str__(self):
-        return self.coments  
 
 """
 "Registartions

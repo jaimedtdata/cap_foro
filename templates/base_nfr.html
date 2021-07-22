@@ -59,6 +59,14 @@
     {% if alert %}
         $.notify("{{alert}}", {'position':'right-bottom', 'className':'success'});
     {% endif %}
+
+
+    $(document).ready(function(){
+    $(".reply-popup").click(function(){
+    $(".reply-box").toggle();
+    });
+    });
+
     </script>
 
 </body>

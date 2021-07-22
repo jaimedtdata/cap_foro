@@ -24,6 +24,7 @@ DJANGO_APPS = (
 LOCAL_APPS = (
     'apps',
     'foro',
+    'normas',
 
 )
 

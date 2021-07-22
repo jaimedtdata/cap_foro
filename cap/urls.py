@@ -17,9 +17,11 @@ urlpatterns = [
     
     path('sign-up/', signup, name='sign-up'),
     #path('normas/', include('apps.normas.urls',namespace='Normas')),
+    #path('foro/', include('apps.foro.urls',namespace='Normas')),
     path('rules/', rules, name='rules'),
     path('carga_rules/', carga_rules, name='carga_rules'),
-    path('member/', member, name='member'),
+    # path('member/', member, name='member'),
+
     path('foro/', foro, name='foro'),
     path('foro_temas/', foro_temas, name='foro_temas'),
     path('foro_comentarios/', foro_comentarios, name='foro_comentarios'),
@@ -27,25 +29,22 @@ urlpatterns = [
 
     
     path('preguntas/', preguntas, name='preguntas'),
-    #path('preguntas_edit/', preguntas, name='preguntas'),
-    #path('preguntas_edit/<int:pk>/', preguntas_edit, name='plan_edit'),
-    #path('preguntas_delete/<int:pk>/', preguntas_delete, name='plan_delete'),
 
     path('plan_list/', plan_list, name='plan_list'),
     path('checkout/', checkout, name='checkout'),
     
-    path('plan/', plan, name='plan'),
-    path('plan/plan_edit/<int:pk>/', plan_edit, name='plan_edit'),
-    path('plan/plan_edit/', plan_edit, name='plan_edit'),
-    path('plan/plan_delete/<int:pk>/', plan_delete, name='plan_delete'),
+    # path('plan/', plan, name='plan'),
+    # path('plan/plan_edit/<int:pk>/', plan_edit, name='plan_edit'),
+    # path('plan/plan_edit/', plan_edit, name='plan_edit'),
+    # path('plan/plan_delete/<int:pk>/', plan_delete, name='plan_delete'),
 
-    path('users/', users, name='users'),
-    url(r'^users/users_create$', users_create, name='users_create'),
-    url(r'^users/users_save$', users_save, name='users_save'),
-    url(r'^users/users_edit/(?P<id>\d+)$', users_edit, name='users_edit'),
-    url(r'^users/users_edit/users_update/(?P<id>\d+)$', users_update, name='users_update'),
-    url(r'^users/users_delete/(?P<id>\d+)$', users_delete, name='users_delete'),
+    # path('users/', users, name='users'),
+    # url(r'^users/users_create$', users_create, name='users_create'),
+    # url(r'^users/users_save$', users_save, name='users_save'),
+    # url(r'^users/users_edit/(?P<id>\d+)$', users_edit, name='users_edit'),
+    # url(r'^users/users_edit/users_update/(?P<id>\d+)$', users_update, name='users_update'),
+    # url(r'^users/users_delete/(?P<id>\d+)$', users_delete, name='users_delete'),
     #path('users_edit/<int:pk>/', users_edit, name='users_edit'),
-    path('configs/', configs, name='configs'),
+    # path('configs/', configs, name='configs'),
 ]
-admin.site.site_header = 'Administracion - Normativas'
+admin.site.site_header = 'Administracion - Normativa'

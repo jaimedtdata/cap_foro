@@ -1,3 +1,9 @@
+
+METODPAY_CHOICES= (
+    ('E', 'VISA'),
+    ('V', 'EFECTIVO'),
+)
+
 PROFESSION_CHOICES = (
     ('A', 'ARQUITECTO'),
     ('I', 'INGENIERO'),
