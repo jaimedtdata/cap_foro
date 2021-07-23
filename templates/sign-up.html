@@ -42,7 +42,7 @@
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Promo code">
               <div class="input-group-append">
-                <button type="submit" class="btn btn-secondary">Redeem</button>
+                <button type="submit" class="btn btn-secondary">Aplicar</button>
               </div>
             </div>
           </form>
@@ -85,7 +85,7 @@
               <label for="email">Email </label>
               <input type="email" class="form-control" id="email" placeholder="you@example.com">
               <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
+                Por favor ingrese un email valido.
               </div>
             </div>
 
@@ -93,7 +93,7 @@
               <label for="address">Direccion</label>
               <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
               <div class="invalid-feedback">
-                Please enter your shipping address.
+               Por favor ingrese su direccion
               </div>
             </div>
 
@@ -103,7 +103,7 @@
                 <label for="country">Provincia</label>
                 <select class="custom-select d-block w-100" id="country" required>
                   <option value="">Seleccione...</option>
-                  <option>United States</option>
+                  <option>Lima</option>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid country.
@@ -113,7 +113,7 @@
                 <label for="state">Distrito</label>
                 <select class="custom-select d-block w-100" id="state" required>
                   <option value="">Seleccione...</option>
-                  <option>California</option>
+                  <option>Lima</option>
                 </select>
                 <div class="invalid-feedback">
                   Please provide a valid state.
@@ -139,11 +139,11 @@
             <div class="d-block my-3">
               <div class="custom-control custom-radio">
                 <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                <label class="custom-control-label" for="credit">Credit card</label>
+                <label class="custom-control-label" for="credit">Tarjeta de crédito o débito | Visa </label>
               </div>
               <div class="custom-control custom-radio">
                 <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="debit">Debit card</label>
+                <label class="custom-control-label" for="debit">Pago Efectivo</label>
               </div>
               <div class="custom-control custom-radio">
                 <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
@@ -151,16 +151,17 @@
               </div>
             </div>
             <div class="row">
+            
               <div class="col-md-6 mb-3">
-                <label for="cc-name">Name on card</label>
+                <label for="cc-name">Nombre del Titular</label>
                 <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                <small class="text-muted">Full name as displayed on card</small>
+                <small class="text-muted">Nombre Completo que muestra la Tarjeta</small>
                 <div class="invalid-feedback">
                   Name on card is required
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="cc-number">Credit card number</label>
+                <label for="cc-number">Número de tarjeta</label>
                 <input type="text" class="form-control" id="cc-number" placeholder="" required>
                 <div class="invalid-feedback">
                   Credit card number is required
@@ -169,7 +170,7 @@
             </div>
             <div class="row">
               <div class="col-md-3 mb-3">
-                <label for="cc-expiration">Expiration</label>
+                <label for="cc-expiration">Expiración</label>
                 <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
                 <div class="invalid-feedback">
                   Expiration date required
@@ -184,19 +185,12 @@
               </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Efectuar Pago</button>
           </form>
         </div>
       </div>
 
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2017-2018 Company Name</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-      </footer>
+
     </div>
 
 
