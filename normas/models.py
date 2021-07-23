@@ -65,6 +65,8 @@ class Location_Normas(models.Model):
         verbose_name='Fecha de Registro')
     class Meta:
         verbose_name_plural = '3.Normas - Locacion'
+    def __str__(self):
+        return self.Location_name    
 
 class Master_Normas(models.Model):
     
