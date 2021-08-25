@@ -327,32 +327,32 @@ class RulesForm(forms.Form):
 
     # Tipo Normativa
     #Error
-    #SECTIONS_CHOICES =  list(Subcategories_Normas.objects.values_list('id', 'subcategory_name'))
+    SECTIONS_CHOICES =  list(Subcategories_Normas.objects.values_list('id', 'subcategory_name'))
     
     # Uso Categoria
-    #RULES_TYPES =  list(Categories_Normas.objects.values_list('id', 'category_name'))
-    RULES_TYPES =  (
-     ('','-------- Todos --------'),
-     ('','Hospedaje'),
-     ('','Educación'),
-     ('','Salud'),
-    )
+    RULES_TYPES =  list(Categories_Normas.objects.values_list('id', 'category_name'))
+    #RULES_TYPES =  (
+    # ('','-------- Todos --------'),
+    # ('','Hospedaje'),
+    # ('','Educación'),
+    # ('','Salud'),
+    #)
 
 
-    #OCATIONS_CHOICES =  list(Location_Normas.objects.values_list('id', 'Location_name'))
+    LOCATIONS_CHOICES =  list(Location_Normas.objects.values_list('id', 'Location_name'))
     
-    LOCATIONS_CHOICES =  (
-     ('','-------- Todos --------'),
-     ('','Hospedaje'),
-     ('','Educación'),
-     ('','Salud'),
-    )
-    SECTIONS_CHOICES = (
-     ('','-------- Todos --------'),
-     ('','Hospedaje'),
-     ('','Educación'),
-     ('','Salud'),
-    )
+    #LOCATIONS_CHOICES =  (
+    # ('','-------- Todos --------'),
+    # ('','Hospedaje'),
+    # ('','Educación'),
+    # ('','Salud'),
+    #)
+    #SECTIONS_CHOICES = (
+    # ('','-------- Todos --------'),
+    # ('','Hospedaje'),
+    # ('','Educación'),
+    # ('','Salud'),
+    #)
     
     sections = forms.ChoiceField(required=False, widget= forms.Select(attrs=SELECT2_CONTROL), choices=SECTIONS_CHOICES)
     rule_type = forms.ChoiceField(required=False, widget= forms.Select(attrs=SELECT2_CONTROL), choices=RULES_TYPES)
