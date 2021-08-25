@@ -56,20 +56,24 @@
                         <button type="submit" class="btn btn-primary btn-user btn-block" >Ingresar</button>
                     </div>
                         <hr>
-                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                        {% comment %} <a href="index.html" class="btn btn-google btn-user btn-block">
                           <i class="fab fa-google fa-fw"></i> Ingresar con Google
                         </a>
                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                           <i class="fab fa-facebook-f fa-fw"></i> Ingresar con Facebook
-                        </a>
+                        </a> {% endcomment %}
                       </form>
                       <hr>
+                      
                       <div class="text-center">
-                        <a class="small" href="forgot-password.html">Olvidate tu Contraseña?</a>
+                        <a class="small" href="{% url 'password_reset' %}">Olvidate tu Contraseña?</a>
                       </div>
                       <div class="text-center">
-                        <a class="small" href="register.html">Crear una nueva cuenta!</a>
+                      
+                      <a class="small" href="{% url 'sign-up' %}">Crear una nueva cuenta!</a>
+                        
                       </div>
+
 
                          </form>
                 {% endblock %}

@@ -61,10 +61,14 @@ class Themas_foro(models.Model):
 
 
 class Coments_foro(models.Model):
-    themas =  models.ForeignKey(Themas_foro,
-        on_delete=models.CASCADE,
-        help_text='Temas', blank=True,
-        verbose_name='Temas')
+    # themas =  models.ForeignKey(Themas_foro,
+    #     on_delete=models.CASCADE,
+    #     help_text='Temas', blank=True,
+    #     verbose_name='Temas')
+    # Tema Referido a id de Norma
+    themas = models.PositiveIntegerField(null=True, blank=True,
+        help_text='Tema',
+        verbose_name='Tema')
     user = models.ForeignKey(User,
         on_delete=models.CASCADE,)
     coments = models.CharField(max_length=200, blank=False,

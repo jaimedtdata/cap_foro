@@ -8,7 +8,7 @@
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #fff;
+    background: #24387C;
     color: #fff;
     transition: all 0.3s;
     border-right: 1px solid #e6ecf5;
@@ -20,7 +20,6 @@
 
 #sidebar .sidebar-header {
     padding: .4rem 1rem;
-    border-bottom: 1px solid #e6ecf5;
     max-height: 55px;
 }
 

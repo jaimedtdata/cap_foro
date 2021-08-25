@@ -20,20 +20,9 @@ PERSON_TYPE_CHOICES = (
 )
 
 USER_ROLES = (
-	('AOT', 'ANALISTA DE ORIENTACIÓN TÉCNICA'),
-	('AP', 'ARQUITECTO PROYECTISTA'),
-	('DEL', 'ARQUITECTO DELEGADO'),
-	('ESP', 'ARQUITECTO ESPECIALISTA'),
-	('AT', 'ASUNTOS TÉCNICOS'),
-	('CAJA', 'CAJA'),
-	('CATR', 'COMITÉ DE ASUNTOS TÉCNICOS REGIONAL (CATR)'),
-	('CZ', 'COORDINADOR ZONAL'),
-	('CD', 'COORDINADOR DISTRITAL'),
-	('ADHOC', 'DELEGADO AD-HOC'),
-	('G', 'GERENCIA'),
-	('PRES', 'PRESIDENTE DE COMISIÓN TÉCNICA'),
-	('PROP', 'PROPIETARIO/ADMINISTRADO'),
-	('SYS', 'SISTEMAS'),
+	('1', 'Gratuito'),
+	('2', 'Premium'),
+	('3', 'Profesional'),
 )
 
 ADHOC_INSTITUTION_CHOICES = (
@@ -143,16 +132,16 @@ PREVENTIONS_CHOICES = (
 	('Regulación Sectorial del Mercado de Valores'),
 )
 
-SECTIONS_CHOICES = (
-	('','-------- Todos --------'),
-	('','RNE'),
-	('','Ley de Procedimientos 29090 -  Ley General 27444'),
-	('','Normas Sectoriales'),
-	('','Normas Tecnicas'),
-	('','Normas Distritales'),
-	('','Cartas Pronunciamente - Opiniones Vinculantes'),
-	('','Ordenanzas'),
-)
+# SECTIONS_CHOICES = (
+# 	('','-------- Todos --------'),
+# 	('','RNE'),
+# 	('','Ley de Procedimientos 29090 -  Ley General 27444'),
+# 	('','Normas Sectoriales'),
+# 	('','Normas Tecnicas'),
+# 	('','Normas Distritales'),
+# 	('','Cartas Pronunciamente - Opiniones Vinculantes'),
+# 	('','Ordenanzas'),
+# )
 
 
 RULES_TYPES = (
@@ -197,24 +186,26 @@ import random
 
 def get_rules():
 	rules = []
-	for i in range(1, random.randint(3,100)):
-		SECTION = random.choice(SECTIONS_CHOICES)[1]
-		RULE_TYPE = random.choice(RULES_TYPES)[1]
-		LOCATIONS = random.choice(LOCATIONS_CHOICES)[1]
-		rules.append(
-			{
-				'n': i,
-				'section': SECTIONS_CHOICES[1][1] if SECTION == SECTIONS_CHOICES[0][1] else SECTION,
-				'rule_type': RULES_TYPES[1][1] if RULE_TYPE == RULES_TYPES[0][1] else RULE_TYPE,
-				'locations': LOCATIONS_CHOICES[1][1] if LOCATIONS == LOCATIONS_CHOICES[0][1] else LOCATIONS,
-				'norm': 'RSUP 000{} - 2020'.format(random.randint(1,100)),
-				'denom': random.choice(DENOMS),
-				'publication_date': '{}/{}/{}'.format(random.randint(1,31),random.randint(1,12),random.randint(2000,2020))
-			}
-		)
+	# for i in range(1, random.randint(3,100)):
+	# 	SECTION = random.choice(SECTIONS_CHOICES)[1]
+	# 	RULE_TYPE = random.choice(RULES_TYPES)[1]
+	# 	LOCATIONS = random.choice(LOCATIONS_CHOICES)[1]
+	# 	rules.append(
+	# 		{
+	# 			'n': i,
+	# 			'section': SECTIONS_CHOICES[1][1] if SECTION == SECTIONS_CHOICES[0][1] else SECTION,
+	# 			'rule_type': RULES_TYPES[1][1] if RULE_TYPE == RULES_TYPES[0][1] else RULE_TYPE,
+	# 			'locations': LOCATIONS_CHOICES[1][1] if LOCATIONS == LOCATIONS_CHOICES[0][1] else LOCATIONS,
+	# 			'norm': 'RSUP 000{} - 2020'.format(random.randint(1,100)),
+	# 			'denom': random.choice(DENOMS),
+	# 			'publication_date': '{}/{}/{}'.format(random.randint(1,31),random.randint(1,12),random.randint(2000,2020))
+	# 		}
+	# 	)
 	return rules
 
 def get_foro_items():
+    	
+	
 	category_list = (
 		{
 			'title': 'Temas Normativos',
@@ -251,141 +242,7 @@ def get_foro_items():
 				},				
 			],
 		},
-		{
-			'title': 'Jurisprudencia Normativa',
-			'items': [
-				{
-					'title':'Noticias',
-					'themes_count': random.randint(10,50),
-					'messages_count': random.randint(50,200),
-					'last_messages': (
-						{
-							'message':'Nueva ley de Edificaciones',
-							'date':'Hoy {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-						{
-							'message':'Accesibilidad y Arquitectura',		
-							'date':'Ayer {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-					)
-				},
-				{
-					'title':'Eventos',
-					'themes_count': random.randint(10,50),
-					'messages_count': random.randint(50,200),
-					'last_messages': (
-						{
-							'message':'El Espacio de la Educación',
-							'date':'Hoy {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-						{
-							'message':'Ceremonia Virtual de Incorporación',
-							'date':'Ayer {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-					)
-				},
-				{
-					'title':'Comunicados',
-					'themes_count': random.randint(10,50),
-					'messages_count': random.randint(50,200),
-					'last_messages': (
-						{
-							'message':'Reinicio de Atención Presencial',
-							'date':'Hoy {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-						{
-							'message':'Trámite Virtuales 2021',
-							'date':'Ayer {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-					)
-				},				
-			],
-		},
-		{
-			'title': 'Propuesta de Normas en Consulta',
-			'items': [
-				{
-					'title':'Licencias, Procedimientos Administrativos  para Licencias de Edificación',
-					'themes_count': random.randint(10,50),
-					'messages_count': random.randint(50,200),
-					'last_messages': (
-						{
-							'message':'Programa General XIII Aniversario CAP',
-							'date':'Hoy {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-						{
-							'message':'Espacios Públicos',		
-							'date':'Ayer {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-					)
-				},
-				{
-					'title':'Ayuda Social',
-					'themes_count': random.randint(10,50),
-					'messages_count': random.randint(50,200),
-					'last_messages': (
-						{
-							'message':'Recaudación para Ayuda Social',
-							'date':'Hoy {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-						{
-							'message':'Intereses comunitarios en Lima',
-							'date':'Ayer {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-					)
-				},
-				{
-					'title':'Recreación',
-					'themes_count': random.randint(10,50),
-					'messages_count': random.randint(50,200),
-					'last_messages': (
-						{
-							'message':'Comité Fiesta de Apertura',
-							'date':'Hoy {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-						{
-							'message':'Post Ceremonia de Colegiados 2020',
-							'date':'Ayer {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-					)
-				},				
-			],
-		},
-		{
-			'title': 'Salud',
-			'items': [
-				{
-					'title':'Información',
-					'themes_count': random.randint(10,50),
-					'messages_count': random.randint(50,200),
-					'last_messages': (
-						{
-							'message':'Programa de Vacunación COVID-19',
-							'date':'Hoy {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-						{
-							'message':'Nuevo SIS 2021',		
-							'date':'Ayer {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-					)
-				},
-				{
-					'title':'Convenios',
-					'themes_count': random.randint(10,50),
-					'messages_count': random.randint(50,200),
-					'last_messages': (
-						{
-							'message':'Convenio Rimac Seguros',
-							'date':'Hoy {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-						{
-							'message':'Convenio Clínica Ricardo Palma',
-							'date':'Ayer {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
-						},
-					)
-				},				
-			],
-		},
+		
 	)
 	return category_list
 
@@ -406,6 +263,19 @@ def get_themes():
 			{
 				'theme': random.choice(random.choice(random.choice(get_foro_items())['items'])['last_messages'])['message'],
 				'user': random.choice(users),
+				'date':'Hoy {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
+			},
+		)
+	return themes
+
+def get_coments():
+	themes = []
+	for x in range(1,15):
+		themes.append(
+			{
+				'theme': '',
+				'user': '',
+				'comment': '',
 				'date':'Hoy {}:{} {}'.format(random.randint(1,12), random.randint(10,59), random.choice(['a.m.','p.m.'])),						
 			},
 		)

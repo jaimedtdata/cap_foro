@@ -85,7 +85,7 @@ body {
     background: #f6f7fb;
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 1rem;
-    color: sandybrown;
+    color: #444;
 }
 
 .wrapper {
@@ -110,6 +110,10 @@ body {
     min-height: 54px;
     box-shadow: none;
     border-bottom: 1px solid #e6ecf5;
+    
+}
+.bg-white{
+    background-color:black !important
 }
 
 /*------------------------------------------------------------------
@@ -132,7 +136,6 @@ body {
 #body>.content {
     position: relative;
     padding: .5rem;
-	background: #203A73
 }
 
 #body .content .page-title h3 {
@@ -184,8 +187,12 @@ body {
 */
 .card {
     margin-bottom: 15px;
+    color: black
+    
 }
-
+.card-body{
+    background:#c1a13f
+}
 .card .content {
     padding: 15px 15px 10px 15px;
 }
@@ -266,7 +273,7 @@ body {
 a,
 a:hover,
 a:focus {
-    color: inherit;
+    color: white;
     text-decoration: none;
     transition: all 0.3s;
 }
@@ -335,6 +342,7 @@ table.dataTable>tbody>tr.child ul.dtr-details {
 
 .svg-inline--fa {
     min-width: 15px;
+    color:white
 }
 
 .display-absolute {
@@ -431,6 +439,7 @@ table.dataTable>tbody>tr.child ul.dtr-details {
         display: flex !important;
         -ms-flex-preferred-size: auto;
         flex-basis: auto;
+        background-color:black
    }
 
     .navbar-expand-lg .navbar-nav {

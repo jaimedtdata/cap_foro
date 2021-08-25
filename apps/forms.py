@@ -1,7 +1,11 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from normas.models import Categories_Normas,Areas_Normas,Subcategories_Normas,Location_Normas
+from .models import Plan, Member
+from foro.models import Coments_foro
 
-USER_CONTROL = {'class': 'form-control', 'placeholder':'Usuario'}
+
+USER_CONTROL = {'class': 'form-control', 'placeholder':'Usuario/CAP'}
 PASSWORD_CONTROL = {'class': 'form-control', 'placeholder':'Contraseña', 'type':'password'}
 
 
@@ -133,14 +137,90 @@ DATE_FIELD = forms.Field(required=False, widget= forms.TextInput(attrs=DATE_CONT
 TIME_FIELD = forms.Field(required=False, widget= forms.TextInput(attrs=TIME_CONTROL))
 TXTAREA_FIELD = forms.Field(required=False, widget= forms.Textarea(attrs=TEXTAREA_CONTROL))
 
+FORM_CONTROL = {'class': 'form-control'}
+FORM_CONTROL_UPPER = {'class': 'form-control upper-case'}
+TEXTAREA_CONTROL = {'class': 'form-control','rows': '4'}
+TEXTAREA_UPPER_CONTROL = {'class': 'form-control upper-case','rows': '4'}
+FORM_CONTROL_UPPER_N_LETTERS = {'class': 'form-control upper-case just-letters'}
+FORM_CONTROL_DISABLED = {'class': 'form-control', 'disabled':''}
+FORM_CONTROL_READONLY = {'class': 'form-control', 'readOnly':'true'}
+NO_DISABLED_CONTROL = {'class': 'form-control no-disabled-case'}
+ 
+DNI_CONTROL = {'class': 'form-control dni-case'}
+USE_TYPE_CONTROL = {'class': 'form-control use_type_change'}
+USE_AREA_CONTROL = {'class': 'form-control use_area_change','min':0}
 
+PASSWORD_CONTROL = {'class': 'form-control', 'placeholder':'Contraseña', 'type':'password'}
+PHONE_CONTROL = {'class': 'form-control','placeholder':'Ejemplo: 01202120'}
+CELLPHONE_CONTROL = {'class': 'form-control cellphone-case','min':900000000, 'max':999999999}
+EMAIL_CONTROL = {'class': 'form-control'}
+EMAIL_PH_CONTROL = {'class': 'form-control', 'placeholder':'Correo Electrónico'}
 
-from .models import Plan
 #https://developer.mozilla.org/es/docs/Learn/Server-side/Django/Forms
 #https://stackoverflow.com/questions/2303268/djangos-forms-form-vs-forms-modelform
 #https://djangobook.com/mdj2-django-forms/
 
+class ExternalRegisterForm(forms.ModelForm):
+        class Meta:
+                model = Member
+                exclude = ('user','full_name','roles')
+                fields = [
+                    'names',
+                    'first_surname',
+                    'second_surname',
+                    'identity',
+                    'person_type',
+                    'mobile',
+                    'phone',
+                    'email',
+                    'address',
+                    'profession',
+                    'tuition',
+                    'secret_code',
+                ]
+                widgets = {
+                    'names': forms.TextInput(attrs=FORM_CONTROL_UPPER_N_LETTERS),
+                    'first_surname': forms.TextInput(attrs=FORM_CONTROL_UPPER_N_LETTERS),
+                    'second_surname': forms.TextInput(attrs=FORM_CONTROL_UPPER_N_LETTERS),
+                    'identity': forms.NumberInput(attrs=DNI_CONTROL),
+                    'mobile': forms.NumberInput(attrs=CELLPHONE_CONTROL),
+                    'phone': forms.NumberInput(attrs=PHONE_CONTROL),
+                    'email': forms.TextInput(attrs=EMAIL_CONTROL),
+                    'address': forms.TextInput(attrs=FORM_CONTROL_UPPER),
+                    'profession': forms.Select(attrs=SELECT2_CONTROL),
+                    'tuition': forms.NumberInput(attrs=FORM_CONTROL),
+                    'secret_code': forms.NumberInput(attrs=FORM_CONTROL),
+                    'person_type': forms.Select(attrs=SELECT2_CONTROL),
+                }
 
+                def clean(self):
+                    cleaned_data = super().clean()
+                    email = cleaned_data.get("email")
+                    identity = cleaned_data.get("identity")
+                    person_type = cleaned_data.get("person_type")
+                    address = cleaned_data.get("address")
+
+                    profiles = Member.objects.filter(email=email)
+                    if profiles:
+                        self.add_error('email', "Este correo electrónico ya se encuentra registrado")
+                    if  len(identity) != 8 and person_type == 'N':
+                        self.add_error('identity', "Ingrese un número de DNI válido")
+                    if  len(identity) != 11 and person_type == 'J':
+                        self.add_error('identity', "Ingrese un número de RUC válido")
+                    if  address == '' and person_type == 'J':
+                        self.add_error('address', "Proporcione una dirección fiscal")
+                    return cleaned_data
+        
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+          model = Coments_foro
+          fields = '__all__'
+          widgets = {
+                'coments': forms.TextInput(attrs=FORM_CONTROL),
+            }
 
 class UserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
@@ -241,9 +321,26 @@ class ComisionForm(forms.Form):
     time = TIME_FIELD
 
 
-from apps.choices import (SECTIONS_CHOICES, RULES_TYPES,LOCATIONS_CHOICES,)
+from apps.choices import (RULES_TYPES,LOCATIONS_CHOICES,)
 
 class RulesForm(forms.Form):
+
+    # Tipo Normativa
+    SECTIONS_CHOICES =  list(Subcategories_Normas.objects.values_list('id', 'subcategory_name'))
+    
+    # Uso Categoria
+    RULES_TYPES =  list(Categories_Normas.objects.values_list('id', 'category_name'))
+    
+    LOCATIONS_CHOICES =  list(Location_Normas.objects.values_list('id', 'Location_name'))
+    
+    
+    # SECTIONS_CHOICES = (
+    # ('','-------- Todos --------'),
+    # ('','Hospedaje'),
+    # ('','Educación'),
+    # ('','Salud'),
+    #)
+    
     sections = forms.ChoiceField(required=False, widget= forms.Select(attrs=SELECT2_CONTROL), choices=SECTIONS_CHOICES)
     rule_type = forms.ChoiceField(required=False, widget= forms.Select(attrs=SELECT2_CONTROL), choices=RULES_TYPES)
     locations = forms.ChoiceField(required=False, widget= forms.Select(attrs=SELECT2_CONTROL), choices=LOCATIONS_CHOICES)

@@ -1,8 +1,12 @@
+import uuid
 from django.db import models
 from .choices import *
 from django.contrib import admin
 from django.utils.html import format_html
 from django.contrib.auth.models import User
+from normas.models import Master_Normas
+from django.urls import reverse,reverse_lazy
+from django.http import HttpResponse, HttpResponseRedirect
 
 def upload_file(instance, filename):
     ext = filename.split('.')[-1]
@@ -26,9 +30,9 @@ def upload_photos(instance, filename):
 
 class Member(models.Model):
     user = models.OneToOneField(
-		User, on_delete=models.CASCADE,
-		help_text='Usuario', null=True, blank=True,
-		verbose_name='Usuario')
+        User, on_delete=models.CASCADE,
+        help_text='Usuario', null=True, blank=True,
+        verbose_name='Usuario')
     first_surname = models.CharField(max_length=50, blank=True,
         help_text='Apellido Paterno',
         verbose_name='Apellido Paterno')
@@ -131,17 +135,16 @@ class Plan(models.Model):
 class Control_payment(models.Model):
     
     member = models.OneToOneField(
-		Member, on_delete=models.CASCADE,
-		help_text='Miembros', null=True, blank=True,
-		verbose_name='Miembros')
+        Member, on_delete=models.CASCADE,
+        help_text='Miembros', null=True, blank=True,
+        verbose_name='Miembros')
     id_plan = models.OneToOneField(
-		Plan, on_delete=models.CASCADE,
-		help_text='Plan Suscrito', null=True, blank=True,
-		verbose_name='Plan de Suscripcion')        
+        Plan, on_delete=models.CASCADE,
+        help_text='Plan Suscrito', null=True, blank=True,
+        verbose_name='Plan de Suscripcion')        
     pay_method = models.CharField(max_length=1,
         help_text='Metodo de Pago', choices=METODPAY_CHOICES,
         verbose_name='Metodo de Pago', blank=True)
-        
     pay_import = models.DecimalField(max_digits = 10,decimal_places = 2,
         help_text='Importe Pagado',
         verbose_name='Importe Pagado')  
@@ -157,11 +160,13 @@ class Control_payment(models.Model):
         blank=False, null=False, auto_now_add=True,
         help_text='Fecha de Registro',
         verbose_name='Fecha de Registro')
+
+
+        
     class Meta:
         verbose_name_plural = 'Control de Pagos'
 
 class Policies_usage(models.Model):
-    
     
     title = models.CharField(max_length=200, blank=False,
         help_text='Titulo de Consulta',
@@ -170,8 +175,8 @@ class Policies_usage(models.Model):
         help_text='Respuesta',
         verbose_name='Respuesta')      
     platform =  models.CharField(max_length=1,
-		help_text='Plataforma', choices=PLATAFORMA_TYPE_CHOICES,
-		verbose_name='Plataforma', blank=False) 
+        help_text='Plataforma', choices=PLATAFORMA_TYPE_CHOICES,
+        verbose_name='Plataforma', blank=False) 
     validity_date_start = models.DateField(
         blank=False, null=False, auto_now_add=False,
         help_text='Fecha',
@@ -184,8 +189,33 @@ class Policies_usage(models.Model):
         blank=False, null=False, auto_now_add=True,
         help_text='Fecha de Registro',
         verbose_name='Fecha de Registro')
+
+    norma_name = models.ManyToManyField(Master_Normas,related_name="normas_rel") 
+
     class Meta:
         verbose_name_plural = 'Preguntas Frecuentes'
+
+
+class UserToken(models.Model):
+    token = models.UUIDField(primary_key=True, null=False, unique=True,
+        default=uuid.uuid4, editable=False)
+    user_profile = models.OneToOneField(
+        Member, on_delete=models.CASCADE,
+        help_text='Usuario', null=False,
+        verbose_name='Usuario')
+
+    class Meta:
+        verbose_name_plural = 'Tokens'
+
+    def get_confirm_link(self):
+        print (self.token)
+        #return reverse('sign_up', kwargs={'token': self.token})
+        
+
+    def get_password_reset_link(self):
+        return reverse('password_reset_token', kwargs={'token': self.token})
+ 
+
 """
 
  * TABLAS NORMAS 

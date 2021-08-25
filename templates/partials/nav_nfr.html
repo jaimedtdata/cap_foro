@@ -1,23 +1,30 @@
 {% load static %}
+{% load user_tags %}
 
 <nav id="sidebar" class="{% if nonav %}active{% endif %}">
     <div class="sidebar-header">
-        <img src="{% static 'img/logo_cap1.png' %}" alt="bootraper logo" width="170" class="app-logo">
+        <img src="{% static 'img/logo_cap3.png' %}" alt="bootraper logo" width="170" class="app-logo">
     </div>
     <ul class="list-unstyled components text-secondary">
+    {% if request.user|has_group:"Premium" %} 
         <li class="dropdown-toggle no-caret-down {% if dashboard %}active{% endif %}">
             <a href="{% url 'dash' %}"><i class="fas fa-home"></i> Home</a>
         </li>
-
+    {% endif %}
         <li>
             <a href="#uielementsmenu" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-book"></i> Normativa</a>
             <ul class="collapse list-unstyled " id="uielementsmenu">
                 <li>
+                <a href="{% url 'dashboard' %}"><i class="fas fa-balance-scale-left"></i>Busqueda Normas Legales</a>
+                {% comment %}
                    <a href="{% url 'rules' %}"><i class="fas fa-balance-scale-left"></i>Busqueda Normas Legales</a>
+                {% endcomment %}
                 </li>
+                {% if request.user|has_group:"Premium" %} 
                 <li>
                    <a href="{% url 'admin:normas_master_normas_changelist' %}"><i class="fas fa-tasks"></i>Carga de Normas</a>
                 </li>
+                {% endif %}
 
 
             </ul>
@@ -46,10 +53,11 @@
             </ul>
         </li>
          {% endcomment %}
-
+        {% if request.user|has_group:"Premium" %} 
          <li>
             <a href="{% url 'admin:index' %}" target="_blank" class="dropdown-toggle no-caret-down"><i class="fas fa-tasks"></i>Adm. Base de Datos</a>
         </li>
+        {% endif %}
         {% comment %} <li>
             <a href="#uielementsmenu2" data-toggle="collapse" class="dropdown-toggle no-caret-down"><i class="fas fa-wrench"></i> Configuracion</a>
             <ul class="collapse list-unstyled " id="uielementsmenu2">
@@ -64,16 +72,15 @@
 
 
 
-
+         {% if request.user|has_group:"Premium" %} 
           <li class=" {% if admin %}active{% endif %}">
             <a href="{% url 'preguntas' %}"><i class="fas fa-user"></i>Preguntas Frecuentes</a>
         </li>
           <li class=" {% if admin %}active{% endif %}">
             <a href="{% url 'plan_list' %}"><i class="fas fa-user"></i>Planes y Suscripción</a>
         </li>
-        <li class=" {% if admin %}active{% endif %}">
-            <a href="{% url 'sign-up' %}"><i class="fas fa-user"></i>Registro Externo</a>
-        </li>
+
+         {% endif %}
     </ul>
 </nav>
 

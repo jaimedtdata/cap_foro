@@ -1,7 +1,7 @@
 from pathlib import Path
 import dj_database_url
 from django.urls import reverse_lazy
-
+import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'qrh*e^+4h@0j1zi_hc2knz5mx4ifq5*#3k-+dvf=2u$9%j@t43'
@@ -71,9 +71,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'bdnormativa',
         'USER': 'postgres',
-        'PASSWORD': 'MZB2LT13',
+        'PASSWORD': 'qwerty',
         'HOST': 'localhost',
-        'PORT': 5432,
+        'PORT': 5433,
     }
 }
 
@@ -109,8 +109,43 @@ USE_L10N = True
 USE_TZ = False
 LOGIN_REDIRECT_URL = reverse_lazy('dash')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = ((BASE_DIR / 'static'),)
+
 STATIC_ROOT = BASE_DIR / 's3'
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
+]
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'jaimemarston@gmail.com'
+EMAIL_HOST_PASSWORD = '42088985jrmm$$$'
+
+
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_SUBJECT_PREFIX = config('EMAIL_SUBJECT_PREFIX')
+# EMAIL_PORT = config('EMAIL_PORT', cast=int)
+# EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+# EMAIL_USE_LOCALTIME = config('EMAIL_USE_LOCALTIME', cast=bool)
+
+
+
+# # Space AWS
+# AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+# AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL')
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+# AWS_LOCATION = config('AWS_LOCATION')
 
 # activar iframe
 # X_FRAME_OPTIONS = 'ALLOWALL'
