@@ -113,11 +113,14 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 's3'
 
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/static/',
-]
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, "static"),
+#    '/static/',
+#]
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
