@@ -115,7 +115,7 @@ STATIC_ROOT = BASE_DIR / 's3'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
+    '/static/',
 ]
 
 
